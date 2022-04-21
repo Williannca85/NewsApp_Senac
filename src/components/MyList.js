@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Text,View,ScrollView,TouchableOpacity, Image} from 'react-native';
 
-export default class MyList extends Component {
+export default class MyList extends React.Component {
   state = {
     loading: false,
     data: [],
@@ -10,8 +10,8 @@ export default class MyList extends Component {
     hasMore: true,
   };
 
-  componentWillMount() {
-    this.getListOfData();//anteriormente era getListOfPictures
+  componentDidMount() {
+    this.getListOfData();//anteriormente era  componentWillMount getListOfPictures
   }
 
   getListOfData = () => {
@@ -56,9 +56,10 @@ export default class MyList extends Component {
      return this.state.data.map((u) => {
       return (
         <TouchableOpacity key={u.id}>
-          <View style={{ padding: 10 }}>
-            <Image source={u.image} style={{margin:20,padding:20 , width:400, height:200}}></Image>
-            <Text style={{ fontSize: 20, textAlign:"center" }}>{u.title}</Text>
+          <View style={{ padding: 10,flex: 1,
+        backgroundColor: '#f2f4f5' }}>
+            <Image source={u.image} style={{margin:30,padding:30 , width:400, height:200}}></Image>
+            <Text style={{ fontSize: 22, textAlign:"center",color:'#000000' }}>{u.title}</Text>
             <Text style={{ fontSize: 15, margin:20, padding:20, textAlign:"justify" }}>{u.text}</Text>
           </View>
         </TouchableOpacity>
